@@ -1,4 +1,5 @@
 ---
 templateKey: index-page
-title: "1111111111"
+title: This is an update world! I've figured out how to implement Netlify CMS on
+  a basic React App!
 ---
