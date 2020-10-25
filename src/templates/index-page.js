@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import { StaticQuery, Link, graphql } from 'gatsby'
 
 
 export const IndexPageTemplate = ({title}) => (
@@ -31,4 +31,12 @@ IndexPage.propTypes = {
 
 export default IndexPage
 
-
+export const pageQuery = graphql`
+  query IndexPageTemplate {
+    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+      frontmatter {
+        title
+      }
+    }
+  }
+`
