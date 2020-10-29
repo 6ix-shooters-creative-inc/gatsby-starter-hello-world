@@ -980,14 +980,13 @@ IndexPage.propTypes = {
 
 export default IndexPage
 
+
 export const pageQuery = graphql`
-    query IndexPageTemplate {
-        markdownRemark(frontmatter: { templateKey: { eq: "index/index" } }) 
-        {
-            frontmatter 
-            {
-                title
-            }
-        }
+  query IndexPageTemplate {
+    markdownRemark(frontmatter: { templateKey: { eq: "index/index" } }) {
+      frontmatter {
+        title
+      }
     }
+  }
 `
