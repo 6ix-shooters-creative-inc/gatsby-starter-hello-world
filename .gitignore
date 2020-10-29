@@ -57,9 +57,8 @@ typings/
 # gatsby files
 .cache/
 public/
-public/
 static/admin/*.bundle.*
-
+build/
 # Mac files
 .DS_Store
 
