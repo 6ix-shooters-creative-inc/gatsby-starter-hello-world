@@ -550,11 +550,9 @@ const innerDemo = [
 ]
 
 
-const IndexPage = ({ data }) => {
-
-    const { frontmatter } = data.markdownRemark
-
-    return (
+export const IndexPageTemplate = ({
+    title,
+}) => (
         <Fragment>
             {/* Start Banner Area  */}
             <div className="prv-banner-wrapper"
@@ -569,7 +567,7 @@ const IndexPage = ({ data }) => {
                                             <img src="/assets/images/logo/logo-all-dark.png" alt="Trydo Images" />
                                         </a>
                                     </div>
-                                    <p className="title">{frontmatter.title}</p>
+                                    <p className="title">{title}</p>
                                     <div className="purshase-btn">
                                         <a href="https://themeforest.net/checkout/from_item/25457315?license=regular" className="rn-button-style--2 btn-solid">BUY Now</a>
                                         <a href="#demo" className="rn-button-style--2 btn-border rn-btn-dark border-opacity-half">View Demos</a>
@@ -951,8 +949,25 @@ const IndexPage = ({ data }) => {
             {/* End Back To Top */}
         </Fragment>
     )
+
+
+IndexPageTemplate.propTypes = {
+    title: PropTypes.string,
 }
 
+const IndexPage = ({ data }) => {
+
+    const { frontmatter } = data.markdownRemark
+
+    return (
+        <div>
+            <IndexPageTemplate
+                title={frontmatter.title}
+            />
+        </div>
+
+    )
+}
 
 IndexPage.propTypes = {
     data: PropTypes.shape({
@@ -962,10 +977,11 @@ IndexPage.propTypes = {
     }),
 }
 
+
 export default IndexPage
 
 export const pageQuery = graphql`
-    query IndexPage {
+    query IndexPageTemplate {
         markdownRemark(frontmatter: { templateKey: { eq: "index/index" } }) 
         {
             frontmatter 
